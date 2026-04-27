@@ -2,6 +2,7 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
+        // Kodlarını burada test edebilirsin
     }
 
     public static boolean shouldWakeUp(boolean isBarking, int hourOfDay) {
