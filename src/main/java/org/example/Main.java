@@ -2,7 +2,23 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        // Kodlarını burada test edebilirsin
+        // Test etmek istersen burayı kullanabilirsin:
+        // System.out.println(numberToWords(123)); // "One Two Three"
+    }
+
+    public static String numberToWords(int number) {
+        if (number < 0) return "Invalid Value";
+
+        char[] digits = String.valueOf(number).toCharArray();
+        String[] words = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+        StringBuilder result = new StringBuilder();
+
+        for (char digit : digits) {
+            int index = Character.getNumericValue(digit);
+            result.append(words[index]).append(" ");
+        }
+
+        return result.toString().trim();
     }
 
     public static boolean shouldWakeUp(boolean isBarking, int hourOfDay) {
