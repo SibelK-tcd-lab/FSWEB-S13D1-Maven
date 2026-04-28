@@ -1,6 +1,5 @@
 package org.example;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -20,6 +19,8 @@ import java.util.stream.Collectors;
 
 public class ResultAnalyzer implements TestWatcher, AfterAllCallback {
     private List<TestResultStatus> testResultsStatus = new ArrayList<>();
+
+    // Task ID sadece "138" olmalı, tüm kod değil.
     private static final String taskId = "138";
 
     private enum TestResultStatus { SUCCESSFUL, FAILED, DISABLED, ABORTED; }
@@ -38,7 +39,7 @@ public class ResultAnalyzer implements TestWatcher, AfterAllCallback {
         long failure = summary.getOrDefault(TestResultStatus.FAILED, 0L);
         double score = (success + failure == 0) ? 0 : (double) success / (success + failure);
 
-        String userId = "307446"; // Güncellenen ID
+        String userId = "307446";
 
         JSONObject json = new JSONObject();
         json.put("score", score);
